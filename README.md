@@ -1,6 +1,10 @@
-# Gatsby + Netlify CMS Starter
+# Mangu: A Gatsby w/ Netlify CMS Starter Project
 
-This repo contains an example business website that is built with [Gatsby](https://www.gatsbyjs.org/), and [Netlify CMS](https://www.netlifycms.org): **[Demo Link](https://gatsby-netlify-cms.netlify.com/)**.
+This repo contains an example business website that is built with:
+* [Gatsby](https://www.gatsbyjs.org/)
+* [Netlify CMS](https://www.netlifycms.org)
+
+**[Demo Link](https://mangu.netlify.com/)**
 
 It follows the [JAMstack architecture](https://jamstack.org) by using Git as a single source of truth, and [Netlify](https://www.netlify.com) for continuous deployment, and CDN distribution.
 
@@ -41,6 +45,12 @@ $ npm run serve
 ### Setting up the CMS
 Follow the [Netlify CMS Quick Start Guide](https://www.netlifycms.org/docs/quick-start/#authentication) to set up authentication, and hosting.
 
+## #Goals
+Some things to do later:
+
+* Optimize the SEO.js file
+* Get inspiration for other features from [this blog post](https://www.gatsbyjs.org/blog/2017-11-06-migrate-hugo-gatsby/)
+
 ## Debugging
 Windows users might encounter ```node-gyp``` errors when trying to npm install.
 To resolve, make sure that you have both Python 2.7 and the Visual C++ build environment installed.
@@ -50,3 +60,4 @@ npm install --global --production windows-build-tools
 ```
 
 [Full details here](https://www.npmjs.com/package/node-gyp 'NPM node-gyp page')
+
