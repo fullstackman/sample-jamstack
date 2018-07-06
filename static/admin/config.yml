@@ -5,12 +5,15 @@ backend:
 media_folder: static/img
 public_folder: /img
 
+display_url: https://mangu.netlify.com
+
 collections:
   - name: "blog"
-    label: "Blog"
+    label: "Blog Posts"
+    label_singular: "post"
     folder: "src/pages/blog"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{slug}}"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
       - {label: "Title", name: "title", widget: "string"}
@@ -21,6 +24,7 @@ collections:
 
   - name: "pages"
     label: "Pages"
+    create: true
     files:
       - file: "src/pages/about/index.md"
         label: "About"
@@ -31,7 +35,7 @@ collections:
           - {label: "Body", name: "body", widget: "markdown"}
       - file: "src/pages/products/index.md"
         label: "Products Page"
-        name: "products"
+        name: "productz"
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
           - {label: Title, name: title, widget: string}
