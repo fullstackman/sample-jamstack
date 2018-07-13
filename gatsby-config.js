@@ -42,7 +42,7 @@ module.exports = {
           "Strict-Transport-Security: 'max-age=15768000; includeSubDomains; preload';",
           "Content-Security-Policy: default-src 'self' 'unsafe-inline';",
           "Content-Security-Policy-Report-Only: default-src 'none';",
-          "A-Music-Hacker: '😲 If you are reading this, send a message to someone[at]example[dot]com and mention this header.';",
+          "A-Music-Hacker: '(¬‿¬) If you are reading this, send a message to someone[at]example[dot]com and mention this header.';",
         ],
         headers: {
           "/admin/*": [
