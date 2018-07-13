@@ -38,20 +38,20 @@ module.exports = {
       resolve: 'gatsby-plugin-netlify',
       options: {
         allPageHeaders: [
-          "Referrer-Policy: origin-when-cross-origin, strict-origin-when-cross-origin;",
-          "Strict-Transport-Security: 'max-age=15768000; includeSubDomains; preload';",
-          "Content-Security-Policy: default-src 'self' 'unsafe-inline';",
-          "Content-Security-Policy-Report-Only: default-src 'none';",
-          "A-Music-Hacker: '(¬‿¬) If you are reading this, send a message to someone[at]example[dot]com and mention this header.';",
+          "Referrer-Policy: origin-when-cross-origin, strict-origin-when-cross-origin",
+          "Strict-Transport-Security: 'max-age=15768000; includeSubDomains; preload'",
+          "Content-Security-Policy: default-src 'self' 'unsafe-inline'",
+          "Content-Security-Policy-Report-Only: default-src 'none'",
+          "A-Music-Hacker: '(¬‿¬) If you are reading this, send a message to someone[at]example[dot]com and mention this header.'",
         ],
         headers: {
           "/admin/*": [
-            "Cache-Control: must-revalidate, no-cache, no-store, pre-check=0, post-check=0, max-age=0, s-maxage=0;",
-            "Expires: 0;",
-            "Pragma: no-cache;",
+            "Cache-Control: must-revalidate, no-cache, no-store, pre-check=0, post-check=0, max-age=0, s-maxage=0",
+            "Expires: 0",
+            "Pragma: no-cache",
           ],
           "/blog/*": [
-            "Cache-Control: no-cache;",
+            "Cache-Control: no-cache",
           ]
         },
       }
