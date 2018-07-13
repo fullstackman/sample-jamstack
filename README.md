@@ -48,7 +48,7 @@ Follow the [Netlify CMS Quick Start Guide](https://www.netlifycms.org/docs/quick
 ## #Goals
 Some things to do later:
 
-* Optimize the SEO.js file
+* Optimize the SEO.js file (note how [this guy](https://github.com/jlengstorf/lengstorf.com/blob/38d1bd8dad5e3bf81a071e15bf31aaa0996ce77f/src/templates/blog-post.js) uses it)
 * Get inspiration for other features from [this blog post](https://www.gatsbyjs.org/blog/2017-11-06-migrate-hugo-gatsby/)
 
 ## Debugging
