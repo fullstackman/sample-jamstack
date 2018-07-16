@@ -38,10 +38,10 @@ module.exports = {
       resolve: 'gatsby-plugin-netlify',
       options: {
         allPageHeaders: [
-          "Referrer-Policy: origin-when-cross-origin, strict-origin-when-cross-origin",
-          "Strict-Transport-Security: 'max-age=15768000; includeSubDomains; preload'",
-          "Content-Security-Policy: default-src 'self' 'unsafe-inline'",
-          "Content-Security-Policy-Report-Only: default-src 'none'",
+          "Referrer-Policy: strict-origin-when-cross-origin",
+          "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload",
+          "Content-Security-Policy: default-src 'self' *.netlify.com",
+          "Feature-Policy: vibrate 'none';  microphone 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'self'; fullscreen 'self'; payment 'self'; usermedia 'self'; sync-xhr 'self'; geolocation 'self'; midi 'self'; notifications 'self'; push 'self';",
           "A-Music-Hacker: '(¬‿¬) If you are reading this, send a message to someone[at]example[dot]com and mention this header.'",
         ],
         headers: {
