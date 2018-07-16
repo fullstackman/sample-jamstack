@@ -15,12 +15,7 @@ const Navbar = () => (
         </Link>
       </div>
       <div className="navbar-start">
-        <Link className="navbar-item" to="/menu">
-          The Menu
-        </Link>
-        <Link className="navbar-item" to="/products">
-          The Products
-        </Link>
+        <Link className="navbar-item" to="/menu">Menu &#9776;</Link>
       </div>
     </div>
   </nav>

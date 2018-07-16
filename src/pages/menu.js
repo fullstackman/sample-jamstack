@@ -38,9 +38,6 @@ class Menu extends React.Component{
 		}
 		return (
 			<div style={quickStyle}>
-				<div style={menuBar}>
-					<span style={closerStyle} onClick={exitMenu}>❌</span>
-				</div>
 				<div style={menuContent}>
 					<h1>Site Menu</h1>
 					<div>
@@ -54,6 +51,9 @@ class Menu extends React.Component{
 					<div>
 						<Link to="/Products">Products</Link>
 					</div>
+				</div>
+				<div style={menuBar}>
+					<span style={closerStyle} onClick={exitMenu}>❌</span>
 				</div>
 			</div>
 		)
