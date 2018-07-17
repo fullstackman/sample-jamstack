@@ -23,7 +23,7 @@ const TemplateWrapper = ({ children }) => (
 		<meta property="og:image" content="https://mangu.netlify.com/icon.png" />
 		<link rel="manifest" href="site.webmanifest"/>
 		/* Place favicon.ico in the root directory*/
-		<link rel="apple-touch-icon" href="icon.png"/>
+		<link rel="apple-touch-icon" href="/img/logo.png"/>
 	</Helmet>
     <Navbar />
     <div>{children()}</div>
