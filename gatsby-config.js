@@ -39,7 +39,7 @@ module.exports = {
       options: {
         /*This affects every page that we actually build*/
         allPageHeaders: [
-          "Content-Security-Policy: default-src 'self'; font-src 'self' https://fonts.gstatic.com; frame-src https://www.youtube.com; img-src 'self'; media-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;",
+          "Content-Security-Policy: default-src 'self'; font-src 'self' https://fonts.gstatic.com; frame-src https://www.youtube.com; connect-src 'self'; img-src 'self'; media-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;",
           /*"Link: </static/my-logo.png>; rel=preload; as=image",*/
         ],
         headers: {
