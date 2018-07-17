@@ -40,7 +40,7 @@ module.exports = {
         allPageHeaders: [
           "Referrer-Policy: strict-origin-when-cross-origin",
           "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload",
-          "Content-Security-Policy: default-src 'self' *.netlify.com 'unsafe-inline'; img-src '* data:'",
+          "Content-Security-Policy: default-src 'self' 'unsafe-inline'",
           "Feature-Policy: vibrate 'none';  microphone 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'self'; fullscreen 'self'; payment 'self'; usermedia 'self'; sync-xhr 'self'; geolocation 'self'; midi 'self'; notifications 'self'; push 'self';",
           "A-Music-Hacker: '(¬‿¬) If you are reading this, send a message to someone[at]example[dot]com and mention this header.'",
         ],
