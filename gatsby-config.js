@@ -37,13 +37,6 @@ module.exports = {
       // make sure to keep it last in the array
       resolve: 'gatsby-plugin-netlify',
       options: {
-        allPageHeaders: [
-          "Referrer-Policy: strict-origin-when-cross-origin",
-          "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload",
-          "Content-Security-Policy: default-src 'none'; font-src 'self' https://fonts.gstatic.com; frame-src https://www.youtube.com; img-src 'self'; media-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;",
-          "Feature-Policy: vibrate 'none';  microphone 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'self'; fullscreen 'self'; payment 'self'; usermedia 'self'; sync-xhr 'self'; geolocation 'self'; midi 'self'; notifications 'self'; push 'self';",
-          "A-Music-Hacker: '(¬‿¬) If you are reading this, send a message to someone[at]example[dot]com and mention this header.'",
-        ],
         headers: {
           "/admin/*": [
             "Cache-Control: must-revalidate, no-cache, no-store, pre-check=0, post-check=0, max-age=0, s-maxage=0",
@@ -53,6 +46,16 @@ module.exports = {
           "/blog/*": [
             "Cache-Control: no-cache",
           ],
+          "/*": [
+            "X-Frame-Options: DENY",
+            "X-XSS-Protection: 1; mode=block",
+            "X-Content-Type-Options: nosniff",
+            "Referrer-Policy: strict-origin-when-cross-origin",
+            "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload",
+            "Content-Security-Policy: default-src 'none'; font-src 'self' https://fonts.gstatic.com; frame-src https://www.youtube.com; img-src 'self'; media-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;",
+            "Feature-Policy: vibrate 'none';  microphone 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'self'; fullscreen 'self'; payment 'self'; usermedia 'self'; sync-xhr 'self'; geolocation 'self'; midi 'self'; notifications 'self'; push 'self';",
+            "A-Music-Hacker: '(¬‿¬) If you are reading this, send a message to someone[at]example[dot]com and mention this header.'",
+          ]
         },
       }
     }
