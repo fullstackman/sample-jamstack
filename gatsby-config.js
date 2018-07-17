@@ -40,7 +40,7 @@ module.exports = {
         allPageHeaders: [
           "Referrer-Policy: strict-origin-when-cross-origin",
           "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload",
-          "Content-Security-Policy: default-src 'none'; font-src 'self' https://fonts.gstatic.com; frame-ancestors 'none'; frame-src https://www.youtube.com; img-src 'self'; media-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;",
+          "Content-Security-Policy: default-src 'none'; font-src 'self' https://fonts.gstatic.com; frame-src https://www.youtube.com; img-src 'self' 'unsafe-inline'; media-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;",
           "Feature-Policy: vibrate 'none';  microphone 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'self'; fullscreen 'self'; payment 'self'; usermedia 'self'; sync-xhr 'self'; geolocation 'self'; midi 'self'; notifications 'self'; push 'self';",
           "A-Music-Hacker: '(¬‿¬) If you are reading this, send a message to someone[at]example[dot]com and mention this header.'",
         ],
