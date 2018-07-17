@@ -18,7 +18,7 @@ const TemplateWrapper = ({ children }) => (
 		<meta name="twitter:site" content="@yueyonthebeat" />
 		<meta name="twitter:creator" content="@yueyonthebeat" />
 		<meta property="og:url" content="https://mangu.netlify.com/" />
-		<meta property="og:title" content="aagama music | independent record label" />
+		<meta property="og:title" content="Mangu | A GatsbyJS+Netlify Demo Site" />
 		<meta property="og:description" content="Mangu is this beautiful demo web site." />
 		<meta property="og:image" content="https://mangu.netlify.com/icon.png" />
 		<link rel="manifest" href="site.webmanifest"/>
