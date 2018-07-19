@@ -1,8 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
 
-import logo from '../img/logo.png'
-
 const Navbar = () => (
   <nav className="navbar is-transparent">
     <div className="container">
@@ -11,7 +9,7 @@ const Navbar = () => (
           <img src="/img/logo.png" alt="Mangu"/>
         </Link>
       </span>
-      <span className="navbar-start">
+      <span className="navbar-end">
         <Link className="navbar-item" to="/menu">Menu &#9776;</Link>
       </span>
     </div>

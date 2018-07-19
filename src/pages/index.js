@@ -4,73 +4,35 @@ import Link from 'gatsby-link'
 
 export default class IndexPage extends React.Component {
   render() {
-    const { data } = this.props
-    const { edges: posts } = data.allMarkdownRemark
-
     return (
-      <section className="section">
-        <div className="container">
-          <div className="content">
-            <h1 className="has-text-weight-bold is-size-2">The Home Page</h1>
+      <div>
+        <section class="hero home-hero is-fullheight">
+          <div class="hero-body home-body">
+            <div class="container">
+              <h1 class="title">
+                A Beautiful Website
+              </h1>
+              <h2 class="subtitle">
+                This is the future! (powered by Bulma CSS)
+              </h2>
+              <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula sem vel enim tincidunt pulvinar. Proin vulputate augue ligula, mattis sagittis enim facilisis vitae. Vivamus pretium augue id magna efficitur, id blandit neque ullamcorper. Aenean viverra bibendum suscipit. Nam vehicula ligula at neque tristique rutrum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus ex velit, ultricies id fermentum et, convallis in nisl. Ut elementum leo vitae mattis faucibus. Maecenas quis eros gravida, mollis lacus porttitor, sollicitudin lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Sed mattis vestibulum leo, ac varius dui. Sed volutpat enim ut libero tristique venenatis.
+                <br />Sed vehicula, orci quis tristique venenatis, libero elit viverra tellus, vitae pellentesque nisl neque vitae leo. Morbi ac diam ullamcorper, vehicula eros sed, aliquam nunc. Integer consectetur luctus velit, tristique posuere felis euismod vitae. Vivamus sit amet rutrum velit, id euismod elit. Phasellus a augue justo. Integer accumsan placerat purus eu gravida. Donec facilisis pretium condimentum. Donec tempor elit metus, facilisis mattis enim ultrices sed. Fusce non nulla a nisi blandit efficitur. Vivamus lobortis ipsum malesuada, gravida sem sed, malesuada purus. Praesent tristique feugiat nisl quis sagittis. Mauris malesuada interdum urna vel sagittis. Cras eu finibus ipsum, vitae sagittis nulla. Aenean auctor ut leo vel consectetur. Proin tincidunt diam eget nibh fringilla, vel dignissim felis fermentum. </p>
+            </div>
           </div>
-          {posts
-            .map(({ node: post }) => (
-              <div
-                className="content"
-                style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
-                key={post.id}
-              >
-                <p>
-                  <Link className="has-text-primary" to={post.fields.slug}>
-                    {post.frontmatter.title}
-                  </Link>
-                  <span> &bull; </span>
-                  <small>{post.frontmatter.date}</small>
-                </p>
-                <p>
-                  {post.excerpt}
-                  <br />
-                  <br />
-                  <Link className="button is-small" to={post.fields.slug}>
-                    Read More →
-                  </Link>
-                </p>
+          <div class="hero-foot home-foot">
+            <nav class="tabs home-tabs">
+              <div class="container">
+                <ul>
+                  <li>&#169; Mangu 2018</li>
+                  <li><a>Privcay Policy</a></li>
+                  <li><a>Terms</a></li>
+                  <li><a>Box of chocolates</a></li>
+                </ul>
               </div>
-            ))}
-        </div>
-      </section>
+            </nav>
+          </div>
+        </section>
+      </div>
     )
   }
 }
-
-IndexPage.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-}
-
-export const pageQuery = graphql`
-  query IndexQuery {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] },
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
-    ) {
-      edges {
-        node {
-          excerpt(pruneLength: 200)
-          id
-          fields {
-            slug
-          }
-          frontmatter {
-            title
-            templateKey
-            date(formatString: "MMMM DD, YYYY")
-          }
-        }
-      }
-    }
-  }
-`
