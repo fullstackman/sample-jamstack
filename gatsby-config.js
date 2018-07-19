@@ -40,7 +40,6 @@ module.exports = {
         /*This affects every page that we actually build*/
         allPageHeaders: [
           "Content-Security-Policy: default-src 'self'; font-src 'self' https://fonts.gstatic.com; frame-src https://www.youtube.com; connect-src 'self'; img-src 'self'; media-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; report-uri https://aagamamusic.report-uri.com/r/d/csp/enforce;",
-          "Link: </static/logo.png>; rel=preload; as=image",
         ],
         headers: {
           /*This afffects every page requested, even malicious requests and 404s*/
