@@ -51,7 +51,7 @@ module.exports = {
             "Referrer-Policy: strict-origin-when-cross-origin",
             "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload",
             "Content-Security-Policy: default-src 'none'; report-uri https://aagamamusic.report-uri.com/r/d/csp/enforce",
-            "Expect-CT: max-age=86400, enforce, report-uri='https://aagamamusic.report-uri.com/r/d/ct/enforce'"
+            "Expect-CT: max-age=86400, enforce, report-uri='https://aagamamusic.report-uri.com/r/d/ct/enforce'",
             "Feature-Policy: vibrate 'none';  microphone 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'self'; fullscreen 'self'; payment 'self'; usermedia 'self'; sync-xhr 'self'; geolocation 'self'; midi 'self'; notifications 'self'; push 'self';",
             "A-Music-Hacker: '(¬‿¬) If you are reading this, send a message to someone[at]example[dot]com and mention this header.'",
           ],
