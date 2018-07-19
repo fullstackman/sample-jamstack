@@ -3,57 +3,38 @@ import Link from 'gatsby-link';
 
 class Menu extends React.Component{
 	render() {
-		var quickStyle = {
+		/*var quickStyle = {
 			width: '100%',
 			height: '90vh',
 			padding: '1vh 2vw',
-			background: '#ff4400',
+			background: 'linear-gradient(155deg, #ff4400 35%, #fff)',
 			fontSize: '2.5em'
-		};
-		var closerStyle = {
-			display: 'inline-block',
-			color: '#000',
-			fontSize: '2.8em',
-			cursor: 'pointer'
-		};
-		var glassStyle = {
-			cursor: 'pointer'
-		};
-		var menuBar = {
-			display: 'inline-block',
-			width: '20%',
-			height: '100%'
-		}
-		var menuContent = {
-			display: 'inline-block',
-			width: '80%',
-			height: '100%'
-		}
-		var searchBar = {
-			width: '50%',
-			fontSize: '0.8em'
-		}
+		};*/
 		function exitMenu() {
 			window.history.back();
 		}
 		return (
-			<div style={quickStyle}>
-				<div style={menuContent}>
-					<h1>Site Menu</h1>
-					<div>
-						<input style={searchBar} type='text' placeholder='Search this site...'/>
-						<span style={glassStyle}>🔍</span>
+			<div className="section menupage">
+				<div className="level is-mobile">
+					<div className="level-left">
+					    <input className="searchbar" type='text' placeholder='Search this site...'></input>
+					    <span className="click-me">🔍</span>
 					</div>
-					<br />
-					<div>
-						<Link to="/">Home</Link>
-					</div>
-					<div>
-						<Link to="/Products">Products</Link>
+					<div className="level-right">
+					    <span className="click-me" onClick={exitMenu}>Close ❌</span>
 					</div>
 				</div>
-				<div style={menuBar}>
-					<span style={closerStyle} onClick={exitMenu}>❌</span>
+				<div>
+					<Link to="/" className="title is-4">Home</Link>
+					<br/>
+					<Link to="/about" className="title is-4">About</Link>
+					<br/>
+					<Link to="/news" className="title is-4">News</Link>
+					<br/>
+					<Link to="/team" className="title is-4">Team</Link>
+					<br/>
+					<Link to="/contact" className="title is-4">Contact Us</Link>
+					<br/>
 				</div>
 			</div>
 		)

@@ -15,9 +15,9 @@ export const ProductPageTemplate = ({
   fullImage,
   pricing,
 }) => (
-  <section className="section section--gradient">
+  <section>
     <div className="container">
-      <div className="section">
+      <div>
         <div className="columns">
           <div className="column is-10 is-offset-1">
             <div className="content">

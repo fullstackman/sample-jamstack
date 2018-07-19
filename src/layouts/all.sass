@@ -7,7 +7,26 @@ $kaldi-red-invert: #fff
 $primary: $kaldi-red
 $primary-invert: $kaldi-red-invert
 
+$secondary: #cbcbfb
+
 @import "~bulma"
+
+html
+  min-height: 100vh
+
+nav + div
+  min-height: 100vh
+
+.menupage
+  min-height: 100vh
+  background: linear-gradient(195deg, #FFF 10%, $primary)
+
+.menupage .title:hover
+  text-decoration: underline
+  color: $primary-invert
+
+.click-me
+  cursor: pointer
 
 .content .taglist
   list-style: none
@@ -41,6 +60,15 @@ $primary-invert: $kaldi-red-invert
 .margin-top-0
   margin-top: 0 !important
 
+.no-margin
+  margin: 0 !important
+
+.my-nav
+  padding: 1vh 2vw
+  font-weight: bolder
+  font-size: 1.5em
+  border-bottom: solid 2px $primary;
+
 .home-hero 
   background: url('../../static/img/jumbotron.jpg')
 
@@ -57,3 +85,6 @@ $primary-invert: $kaldi-red-invert
 
 .home-tabs a:hover
   color: $primary
+
+.searchbar
+  width: 45vw

@@ -2,17 +2,16 @@ import React from 'react'
 import Link from 'gatsby-link'
 
 const Navbar = () => (
-  <nav className="navbar is-transparent">
-    <div className="container">
-      <span className="navbar-brand">
-        <Link to="/" className="navbar-item">
-          <img src="/img/logo.png" alt="Mangu"/>
+  <nav className="my-nav level is-mobile no-margin">
+      <span className="level-left">
+        <Link to="/">
+          <img src="/img/logo.png" width="50vh" alt="Mangu"/>
         </Link>
+        Mangu
       </span>
-      <span className="navbar-end">
+      <span className="level-right">
         <Link className="navbar-item" to="/menu">Menu &#9776;</Link>
       </span>
-    </div>
   </nav>
 )
 
