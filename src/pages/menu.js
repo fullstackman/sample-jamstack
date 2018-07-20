@@ -3,17 +3,10 @@ import Link from 'gatsby-link';
 
 class Menu extends React.Component{
 	render() {
-		/*var quickStyle = {
-			width: '100%',
-			height: '90vh',
-			padding: '1vh 2vw',
-			background: 'linear-gradient(155deg, #ff4400 35%, #fff)',
-			fontSize: '2.5em'
-		};*/
 		function exitMenu() {
 			window.history.back();
 		}
-		document.addEventListener("keyup", function(event) {
+		window.addEventListener("keyup", function(event) {
 		  // Cancel the default action, if needed
 		  event.preventDefault();
 		  // Number 13 is the "Enter" key on the keyboard
