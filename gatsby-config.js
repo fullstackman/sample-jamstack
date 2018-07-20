@@ -59,6 +59,7 @@ module.exports = {
             "Content-Security-Policy: default-src 'self'; font-src 'self' https://fonts.gstatic.com; frame-src https://www.youtube.com; connect-src 'self'; img-src 'self'; media-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; report-uri https://aagamamusic.report-uri.com/r/d/csp/enforce;",
             "Expires: 0",
             "Pragma: no-cache",
+            "X-Robots-Tag: noindex,nofollow",
           ],
           "/blog/*": [
             "Cache-Control: no-cache",
