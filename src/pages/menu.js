@@ -13,27 +13,42 @@ class Menu extends React.Component{
 		function exitMenu() {
 			window.history.back();
 		}
+		document.addEventListener("keyup", function(event) {
+		  // Cancel the default action, if needed
+		  event.preventDefault();
+		  // Number 13 is the "Enter" key on the keyboard
+		  if (event.keyCode === 13) {
+		    warnUnimp();
+		  }
+		}); 
+		function warnUnimp(){
+			/*have analytics track this query*/
+			let warnMessage = document.querySelector(".warnTarget");
+			warnMessage.style.visibility="initial";
+			console.log('failed search');
+		}
 		return (
 			<div className="section menupage">
 				<div className="level is-mobile">
 					<div className="level-left">
 					    <input className="searchbar" type='text' placeholder='Search this site...'></input>
-					    <span className="click-me">🔍</span>
+					    <span id="searchy" className="click-me the-closer" onClick={warnUnimp}>🔍</span>
 					</div>
 					<div className="level-right">
-					    <span className="click-me" onClick={exitMenu}>Close ❌</span>
+					    <span className="click-me the-closer" onClick={exitMenu}>Close ❌</span>
 					</div>
 				</div>
-				<div>
-					<Link to="/" className="title is-4">Home</Link>
+				<div className="menupage-items">
+					<p className="warnTarget">Sorry, that feature is not working right now.</p>
+					<Link to="/" className="title">Home</Link>
 					<br/>
-					<Link to="/about" className="title is-4">About</Link>
+					<Link to="/about" className="title">About</Link>
 					<br/>
-					<Link to="/news" className="title is-4">News</Link>
+					<Link to="/news" className="title">News</Link>
 					<br/>
-					<Link to="/team" className="title is-4">Team</Link>
+					<Link to="/team" className="title">Team</Link>
 					<br/>
-					<Link to="/contact" className="title is-4">Contact Us</Link>
+					<Link to="/contact" className="title">Contact Us</Link>
 					<br/>
 				</div>
 			</div>
