@@ -16,32 +16,78 @@ export const BlogPostTemplate = ({
   const PostContent = contentComponent || Content
 
   return (
-    <section className="section">
-      {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
+    <div className="blogPage">
+      <section className="hero is-light is-bold">
+        <div className="hero-body">
+          <div className="container">
+            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">{title}</h1>
+            <br/>
+            <p className="subtitle has-text-weight-bold">{description}</p>
+            <p>Published on x-x-x by: Author Name (with possible link to other posts)</p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <section className="section">
+        {helmet || ''}
+        <div className="container content">
+          <div className="columns">
+            <div className="column">
+              <PostContent content={content} />
+              {tags && tags.length ? (
+                <div style={{ marginTop: `2rem` }}>
+                <h3><u>Related Content</u></h3>
+                  <ul className="taglist">
+                    {tags.map(tag => (
+                      <li key={tag + `tag`}>
+                        <Link to={`/tags/${kebabCase(tag)}/`} className="button is-outlined">{tag}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+              <nav class="breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
+                <ul>
+                  <li><a href="/news">News</a></li>
+                  <li class="is-active"><a href="#" aria-current="page">{title}</a></li>
+                </ul>
+              </nav>
+            </div>
+            <div className="column is-3">
+              <div className="card">
+                <header className="card-header">
+                  <p className="card-header-title sidebar-title">Sidebar Content</p>
+                </header>
+                <div className="card-content">
+                  <div className="content">
+                    <p className="subtitle">This is your new favorite sidebar!</p>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
+                    </p>
+                    <div class="control">
+                      Email:
+                      <input class="input" type="text" placeholder="you@your-website.com"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="hero is-dark is-bold">
+        <div className="hero-body">
+          <div className="container">
+            <h2 className="title is-size-2 has-text-weight-bold is-bold-light">Comments</h2>
+            <br/>
+            <div class="field">
+              <div class="control">
+                <textarea class="textarea is-danger is-medium" type="text" placeholder="Type a comment here..."></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
   )
 }
 
