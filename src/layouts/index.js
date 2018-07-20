@@ -15,8 +15,8 @@ const TemplateWrapper = ({ children }) => (
 		/*Yuey, yueyonthebeat, aagama, aagamamusic, agm records, independent record label, free beats, creative commons music*/
 		<meta name="theme-color" content="#ff4400"/>
 		<meta name="twitter:card" content="Mangu is this beautiful demo web site." />
-		<meta name="twitter:site" content="@yueyonthebeat" />
-		<meta name="twitter:creator" content="@yueyonthebeat" />
+		<meta name="twitter:site" content="@fullstackman" />
+		<meta name="twitter:creator" content="@fullstackman" />
 		<meta property="og:url" content="https://mangu.netlify.com/" />
 		<meta property="og:title" content="Mangu | A GatsbyJS+Netlify Demo Site" />
 		<meta property="og:description" content="Mangu is this beautiful demo web site." />
@@ -27,6 +27,14 @@ const TemplateWrapper = ({ children }) => (
 	</Helmet>
     <Navbar />
     <div>{children()}</div>
+	<div className="site-footer">
+	    <ul>
+	    <li>&#169; Mangu 2018</li>
+	      <li><a>Privcay Policy</a></li>
+	      <li><a>Terms</a></li>
+	      <li><a>Box of chocolates</a></li>
+	    </ul>
+  </div>
   </div>
 )
 

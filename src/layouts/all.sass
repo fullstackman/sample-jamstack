@@ -11,6 +11,8 @@ $secondary: #cbcbfb
 
 $breadcrumb-item-color: $primary
 
+$footer-background-color: #080009
+
 @import "~bulma"
 
 html
@@ -84,6 +86,25 @@ nav + div
 .home-foot
   background: #080009
   color: white
+
+.site-footer
+  background: #080009;
+  padding: 1vh 2vw;
+
+.site-footer ul
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  justify-content: flex-start;
+  color: white;
+
+.site-footer li
+  margin: 0 1vw;
+
+.site-footer li a
+  color: white;
+  &:hover
+    color: $primary
 
 .home-tabs a:hover
   color: $primary
