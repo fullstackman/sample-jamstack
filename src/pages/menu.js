@@ -6,14 +6,6 @@ class Menu extends React.Component{
 		function exitMenu() {
 			window.history.back();
 		}
-		window.addEventListener("keyup", function(event) {
-		  // Cancel the default action, if needed
-		  event.preventDefault();
-		  // Number 13 is the "Enter" key on the keyboard
-		  if (event.keyCode === 13) {
-		    warnUnimp();
-		  }
-		}); 
 		function warnUnimp(){
 			/*have analytics track this query*/
 			let warnMessage = document.querySelector(".warnTarget");
