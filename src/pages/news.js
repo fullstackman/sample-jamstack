@@ -11,7 +11,8 @@ export default class News extends React.Component {
       <section className="section">
         <div className="container">
           <div className="content">
-            <h1 className="has-text-weight-bold is-size-2">Latest News</h1>
+            <h1 className="has-text-weight-bold title is-size-2">Latest News</h1>
+            <h3 className="has-text-weight-bold title is-size-3">Because this is more than just a blog</h3>
           </div>
           {posts
             .map(({ node: post }) => (
@@ -31,9 +32,7 @@ export default class News extends React.Component {
                   {post.excerpt}
                   <br />
                   <br />
-                  <Link className="button is-small" to={post.fields.slug}>
-                    Read More →
-                  </Link>
+                  <Link className="button is-small" to={post.fields.slug}>Read More →</Link>
                 </p>
               </div>
             ))}
@@ -55,7 +54,7 @@ export const pageQuery = graphql`
   query NewsQuery {
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] },
-      filter: { frontmatter: { templateKey: { eq: "blog-post" } }}
+      filter: { frontmatter: { templateKey: { eq: "news-post" } }}
     ) {
       edges {
         node {
@@ -67,7 +66,7 @@ export const pageQuery = graphql`
           frontmatter {
             title
             templateKey
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "MM DD, YYYY")
           }
         }
       }

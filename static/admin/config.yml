@@ -7,15 +7,17 @@ public_folder: /img
 
 display_url: https://mangu.netlify.com
 
+publish_mode: editorial_workflow
+
 collections:
-  - name: "blog"
-    label: "Blog Posts"
+  - name: "news"
+    label: "News Updates"
     label_singular: "post"
-    folder: "src/pages/blog"
+    folder: "src/pages/news"
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "news-post"}
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "description", widget: "text"}
