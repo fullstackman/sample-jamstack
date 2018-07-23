@@ -5,10 +5,13 @@ import Helmet from 'react-helmet'
 import Navbar from '../components/Navbar'
 import './all.sass'
 
+const brandName="Mangu";
+const thisYear=(new Date()).getFullYear();
+
 const TemplateWrapper = ({ children }) => (
   <div>
 	<Helmet>
-	    <title>Mangu | A GatsbyJS+Netlify Demo Site</title>
+	    <title>{brandName} | A GatsbyJS+Netlify Demo Site</title>
 		<meta name="description" content="Mangu is this beautiful demo web site."/>
 		<meta name="keywords" content="demo, gatsbyjs, netlify"/>
 	    /*💽 aagama music is an independent record label that is empowering artists to create and share music in a way that empowers fans and other artists to participate in the independent music revolution! ✊*/
@@ -29,7 +32,7 @@ const TemplateWrapper = ({ children }) => (
     <div>{children()}</div>
 	<div className="site-footer">
 	    <ul>
-	    <li>&#169; Mangu 2018</li>
+	    <li>&#169; {brandName} {thisYear}</li>
 	      <li><a>Privcay Policy</a></li>
 	      <li><a>Terms</a></li>
 	      <li><a>Box of chocolates</a></li>

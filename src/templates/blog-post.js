@@ -35,7 +35,7 @@ export const BlogPostTemplate = ({
               <PostContent content={content} />
               {tags && tags.length ? (
                 <div style={{ marginTop: `2rem` }}>
-                <h3><u>Related Content</u></h3>
+                <h3 id="relatedHeader">Related Content</h3>
                   <ul className="taglist">
                     {tags.map(tag => (
                       <li key={tag + `tag`}>
