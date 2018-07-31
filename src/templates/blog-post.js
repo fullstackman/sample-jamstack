@@ -15,6 +15,7 @@ export const BlogPostTemplate = ({
 }) => {
   const PostContent = contentComponent || Content
 
+/* Maybe use:  https://www.addtoany.com/buttons/for/website */
   return (
     <div className="blogPage">
       <section className="hero is-light is-bold">
