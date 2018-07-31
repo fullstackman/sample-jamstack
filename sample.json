@@ -1,0 +1,1 @@
+{"type":"PR","pr":{"number":2,"head":"9a8b5e72a905d9aeb17063ccadd643f799edd7ba"},"user":"mail","status":"draft","branch":"cms/sample","collection":"news","title":"Sample","description":"This article means nothing...yet.","objects":{"entry":{"path":"src/pages/news/sample.md","sha":"1769da2c273e29336b356d25d7fb2cf3d9ff7bf0"},"files":[]},"timeStamp":"2018-07-31T18:16:37.846Z"}
