@@ -79,11 +79,7 @@ export const NewsPostTemplate = ({
           <div className="container">
             <h2 className="title is-size-2 has-text-weight-bold is-bold-light">Comments</h2>
             <br/>
-            <div class="field">
-              <div class="control">
-                <textarea class="textarea is-danger is-medium" type="text" placeholder="Type a comment here..."></textarea>
-              </div>
-            </div>
+            <div id="disqus_thread"></div>            
           </div>
         </div>
       </section>
