@@ -11,3 +11,17 @@ Coffee is a small tree or shrub that grows in the forest understory in its wild 
 ### Single Origin Requests
 
 Single-origin requests are not the same as Cross Origin Requests. You can learn about the difference by doing a simple internet search.
+
+s
+
+<nav class="my-nav level is-mobile no-margin">
+      <span class="level-left">
+        <a href="/">
+          <img src="/img/logo.png" width="50vh" alt="Mangu"/>
+        </a>
+        Mangu
+      </span>
+      <span class="level-right">
+        <a class="navbar-item" to="/menu">Menu &#9776;</a>
+      </span>
+</nav>
