@@ -61,8 +61,9 @@ module.exports = {
             "Pragma: no-cache",
             "X-Robots-Tag: noindex,nofollow",
           ],
-          "/blog/*": [
+          "/news/*": [
             "Cache-Control: no-cache",
+            "Content-Security-Policy: default-src *",
           ],
         },
       }

@@ -35,8 +35,15 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "description", widget: "text"}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "Featured Image", name: "thumbnail", widget: "image", default: "/img/logo.png"}
+      - {label: "Body", name: "body", widget: "text"}
       - {label: "Tags", name: "tags", widget: "list"}
+      - label: "Author"
+        name: "author"
+        widget: "object"
+        fields: 
+          - {label: "Name", name: "authorName", widget: "string"}
+          - {label: "Twitter Handle", name: "handle", widget: "string"}
 
   - name: "pages"
     label: "Pages"

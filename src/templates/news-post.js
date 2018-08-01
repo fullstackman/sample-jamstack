@@ -9,6 +9,7 @@ import Disqus from 'disqus-react';
 export const NewsPostTemplate = ({
   content,
   contentComponent,
+  date,
   description,
   tags,
   title,
@@ -17,7 +18,7 @@ export const NewsPostTemplate = ({
 
   const disqusShortname = 'mangu';
   const disqusConfig = {
-      url: `https://aagamamusic.com/news/${title}`,
+      url: `https://mangu.netlify.com/news/${title}/`,
       identifier: 934578439,
       title: title,
   };
@@ -28,11 +29,10 @@ export const NewsPostTemplate = ({
         <div className="hero-body">
           <div className="container">
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">{title}</h1>
-            <br/>
             <p className="subtitle has-text-weight-bold">{description}</p>
-            <p>Published on x-x-x by: Author Name (with possible link to other posts)</p>
+            <p>Published on {date} by: <a href='../tags'>Author Name</a></p>
             <Disqus.CommentCount shortname={disqusShortname} config={disqusConfig}>
-                    Comments
+              Comments
             </Disqus.CommentCount>
           </div>
         </div>
@@ -113,6 +113,7 @@ const NewsPost = ({ data }) => {
     <NewsPostTemplate
       content={post.html}
       contentComponent={HTMLContent}
+      date={post.frontmatter.date}
       description={post.frontmatter.description}
       tags={post.frontmatter.tags}
       title={post.frontmatter.title}
