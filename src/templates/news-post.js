@@ -4,6 +4,7 @@ import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Content, { HTMLContent } from '../components/Content'
+import Disqus from 'disqus-react';
 
 export const NewsPostTemplate = ({
   content,
@@ -11,9 +12,15 @@ export const NewsPostTemplate = ({
   description,
   tags,
   title,
-  helmet,
 }) => {
-  const PostContent = contentComponent || Content
+  const PostContent = contentComponent || Content;
+
+  const disqusShortname = 'mangu';
+  const disqusConfig = {
+      url: `https://aagamamusic.com/news/${title}`,
+      identifier: 934578439,
+      title: title,
+  };
 
   return (
     <div className="blogPage">
@@ -24,11 +31,14 @@ export const NewsPostTemplate = ({
             <br/>
             <p className="subtitle has-text-weight-bold">{description}</p>
             <p>Published on x-x-x by: Author Name (with possible link to other posts)</p>
+            <Disqus.CommentCount shortname={disqusShortname} config={disqusConfig}>
+                    Comments
+            </Disqus.CommentCount>
           </div>
         </div>
       </section>
       <section className="section">
-        {helmet || ''}
+        <Helmet title={`${title} | News`} />
         <div className="container content">
           <div className="columns">
             <div className="column">
@@ -45,10 +55,10 @@ export const NewsPostTemplate = ({
                   </ul>
                 </div>
               ) : null}
-              <nav class="breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
+              <nav className="breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
                 <ul>
                   <li><a href="/news">News</a></li>
-                  <li class="is-active"><a href="#" aria-current="page">{title}</a></li>
+                  <li className="is-active"><a href="#" aria-current="page">{title}</a></li>
                 </ul>
               </nav>
             </div>
@@ -63,9 +73,9 @@ export const NewsPostTemplate = ({
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
                     </p>
-                    <div class="control">
+                    <div className="control">
                       Email:
-                      <input class="input" type="text" placeholder="you@your-website.com"/>
+                      <input className="input" type="text" placeholder="you@your-website.com"/>
                     </div>
                   </div>
                 </div>
@@ -78,8 +88,9 @@ export const NewsPostTemplate = ({
         <div className="hero-body">
           <div className="container">
             <h2 className="title is-size-2 has-text-weight-bold is-bold-light">Comments</h2>
-            <br/>
-            <div id="disqus_thread"></div>            
+            <div>
+              <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+            </div>
           </div>
         </div>
       </section>
@@ -103,7 +114,6 @@ const NewsPost = ({ data }) => {
       content={post.html}
       contentComponent={HTMLContent}
       description={post.frontmatter.description}
-      helmet={<Helmet title={`${post.frontmatter.title} | News`} />}
       tags={post.frontmatter.tags}
       title={post.frontmatter.title}
     />
