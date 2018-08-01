@@ -63,7 +63,7 @@ module.exports = {
           ],
           "/news/*": [
             "Cache-Control: no-cache",
-            "Content-Security-Policy: default-src *",
+            "Content-Security-Policy: default-src *; script-src *; img-src *;",
           ],
         },
       }
