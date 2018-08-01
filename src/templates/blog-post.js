@@ -11,7 +11,6 @@ export const BlogPostTemplate = ({
   description,
   tags,
   title,
-  helmet,
 }) => {
   const PostContent = contentComponent || Content
 
@@ -29,7 +28,7 @@ export const BlogPostTemplate = ({
         </div>
       </section>
       <section className="section">
-        {helmet || ''}
+        <Helmet title={`${title} | News`} />
         <div className="container content">
           <div className="columns">
             <div className="column">
@@ -46,10 +45,10 @@ export const BlogPostTemplate = ({
                   </ul>
                 </div>
               ) : null}
-              <nav class="breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
+              <nav className="breadcrumb has-succeeds-separator" aria-label="breadcrumbs">
                 <ul>
                   <li><a href="/news">News</a></li>
-                  <li class="is-active"><a href="#" aria-current="page">{title}</a></li>
+                  <li className="is-active"><a href="#" aria-current="page">{title}</a></li>
                 </ul>
               </nav>
             </div>
@@ -64,9 +63,9 @@ export const BlogPostTemplate = ({
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
                     </p>
-                    <div class="control">
+                    <div className="control">
                       Email:
-                      <input class="input" type="text" placeholder="you@your-website.com"/>
+                      <input className="input" type="text" placeholder="you@your-website.com"/>
                     </div>
                   </div>
                 </div>
@@ -80,9 +79,9 @@ export const BlogPostTemplate = ({
           <div className="container">
             <h2 className="title is-size-2 has-text-weight-bold is-bold-light">Comments</h2>
             <br/>
-            <div class="field">
-              <div class="control">
-                <textarea class="textarea is-danger is-medium" type="text" placeholder="Type a comment here..."></textarea>
+            <div className="field">
+              <div className="control">
+                <textarea className="textarea is-danger is-medium" type="text" placeholder="Type a comment here..."></textarea>
               </div>
             </div>
           </div>
@@ -108,7 +107,6 @@ const BlogPost = ({ data }) => {
       content={post.html}
       contentComponent={HTMLContent}
       description={post.frontmatter.description}
-      helmet={<Helmet title={`${post.frontmatter.title} | Blog`} />}
       tags={post.frontmatter.tags}
       title={post.frontmatter.title}
     />
