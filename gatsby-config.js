@@ -65,7 +65,7 @@ module.exports = {
           /*News posts (which contain disqus comment sections)*/
           "/news/*": [
             "Cache-Control: no-cache",
-            "Content-Security-Policy: default-src *; font-src 'self' https://fonts.gstatic.com; frame-src *; connect-src 'self'; img-src *; media-src 'self'; script-src *; style-src *; report-uri https://aagamamusic.report-uri.com/r/d/csp/enforce;",
+            "Content-Security-Policy: default-src 'self' *.disqus.com; font-src 'self' https://fonts.gstatic.com; frame-src *; connect-src 'self'; img-src *; media-src 'self'; script-src 'self' 'unsafe-inline' *.disqus.com; style-src *; report-uri https://aagamamusic.report-uri.com/r/d/csp/report;",
           ],
         },
       }
