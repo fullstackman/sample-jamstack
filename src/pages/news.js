@@ -29,7 +29,12 @@ export default class News extends React.Component {
                   <small>{post.frontmatter.date}</small>
                 </p>
                 <p>
-                  {post.excerpt}
+                  <span>By <a href={`https://twitter.com/${post.frontmatter.author.handle || ''}`} target="_blank" rel="noopener">
+                    {post.frontmatter.author.authorName || 'Unknown Author'}
+                  </a></span>
+                </p>
+                <p>
+                  {post.frontmatter.description}
                   <br />
                   <br />
                   <Link className="button is-small" to={post.fields.slug}>Read More →</Link>
@@ -67,6 +72,11 @@ export const pageQuery = graphql`
             title
             templateKey
             date(formatString: "MMMM DD, YYYY")
+            description
+            author{
+              authorName
+              handle
+            }
           }
         }
       }

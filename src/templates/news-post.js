@@ -7,19 +7,23 @@ import Content, { HTMLContent } from '../components/Content'
 import Disqus from 'disqus-react'
 
 export const NewsPostTemplate = ({
+  author,
   content,
   contentComponent,
   date,
   description,
+  id,
   tags,
   title,
 }) => {
   const PostContent = contentComponent || Content;
+  author.authorName = author.authorName || 'Unknown Author';
+  author.handle = author.handle || '';
 
   const disqusShortname = 'mangu';
   const disqusConfig = {
       url: `https://mangu.netlify.com/news/${title}/`,
-      identifier: 934578439,
+      identifier: `news-${id}`,
       title: title,
   };
 
@@ -29,8 +33,15 @@ export const NewsPostTemplate = ({
         <div className="hero-body">
           <div className="container">
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">{title}</h1>
-            <p className="subtitle has-text-weight-bold">{description}</p>
-            <p>Published on {date} by: <a href='../tags'>Author Name</a></p>
+            <p>
+              <span>by:&nbsp;
+                <a href={`https://twitter.com/${author.handle || ''}`} target="_blank" rel="noopener">
+                  {author.authorName}
+                </a>
+              <br/>
+              {date}
+              </span>
+            </p>
             <Disqus.CommentCount shortname={disqusShortname} config={disqusConfig}>
               Comments
             </Disqus.CommentCount>
@@ -111,10 +122,12 @@ const NewsPost = ({ data }) => {
 
   return (
     <NewsPostTemplate
+      author={post.frontmatter.author}
       content={post.html}
       contentComponent={HTMLContent}
       date={post.frontmatter.date}
       description={post.frontmatter.description}
+      id={post.id}
       tags={post.frontmatter.tags}
       title={post.frontmatter.title}
     />
@@ -139,6 +152,10 @@ export const newzQuery = graphql`
         title
         description
         tags
+        author{
+          authorName
+          handle
+        }
       }
     }
   }
