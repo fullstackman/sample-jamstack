@@ -4,7 +4,6 @@ import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Content, { HTMLContent } from '../components/Content'
-import Disqus from 'disqus-react'
 
 export const BlogPostTemplate = ({
   content,
@@ -13,13 +12,7 @@ export const BlogPostTemplate = ({
   tags,
   title,
 }) => {
-  const PostContent = contentComponent || Content;
-
-  const disqusShortname = 'mangu';
-  const disqusConfig = {
-      url: `https://mangu.netlify.com/news/${title}/`,
-      identifier: 934578439,
-      title: title,
+  const PostContent = contentComponent || Content
 
 /* Maybe use:  https://www.addtoany.com/buttons/for/website */
   return (
@@ -31,9 +24,6 @@ export const BlogPostTemplate = ({
             <br/>
             <p className="subtitle has-text-weight-bold">{description}</p>
             <p>Published on x-x-x by: Author Name (with possible link to other posts)</p>
-            <Disqus.CommentCount shortname={disqusShortname} config={disqusConfig}>
-              Comments
-            </Disqus.CommentCount>
           </div>
         </div>
       </section>
@@ -88,8 +78,11 @@ export const BlogPostTemplate = ({
         <div className="hero-body">
           <div className="container">
             <h2 className="title is-size-2 has-text-weight-bold is-bold-light">Comments</h2>
-            <div>
-              <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+            <br/>
+            <div className="field">
+              <div className="control">
+                <textarea className="textarea is-danger is-medium" type="text" placeholder="Type a comment here..."></textarea>
+              </div>
             </div>
           </div>
         </div>

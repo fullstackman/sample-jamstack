@@ -39,7 +39,7 @@ module.exports = {
       options: {
         /*This affects every page that we actually build*/
         allPageHeaders: [
-          "Content-Security-Policy: default-src 'none'; connect-src links.services.disqus.com aagamamusic.report-uri.com; font-src 'self' cdnjs.cloudflare.com fonts.gstatic.com; frame-src disqus.com c.disquscdn.com www.google.com www.youtube.com; img-src 'self' c.disquscdn.com referrer.disqus.com www.gstatic.com data:; script-src 'self' c.disquscdn.com disqus.com mangu.disqus.com www.google.com www.gstatic.com cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' c.disquscdn.com cdnjs.cloudflare.com fonts.googleapis.com; form-action 'none'; base-uri 'self'; upgrade-insecure-requests; report-uri https://aagamamusic.report-uri.com/r/d/csp/enforce",
+          "Content-Security-Policy: default-src 'none'; connect-src links.services.disqus.com aagamamusic.report-uri.com; font-src 'self' cdnjs.cloudflare.com fonts.gstatic.com; frame-src disqus.com c.disquscdn.com www.google.com www.youtube.com; img-src 'self' c.disquscdn.com referrer.disqus.com www.gstatic.com data:; script-src 'self' c.disquscdn.com disqus.com mangu.disqus.com www.google.com www.gstatic.com cdnjs.cloudflare.com 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' c.disquscdn.com cdnjs.cloudflare.com fonts.googleapis.com; form-action 'none'; base-uri 'self'; upgrade-insecure-requests; report-uri https://aagamamusic.report-uri.com/r/d/csp/enforce",
         ],
         headers: {
           /*This afffects every page requested, even malicious requests and 404s*/
