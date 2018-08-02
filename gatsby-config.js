@@ -54,6 +54,7 @@ module.exports = {
             "Feature-Policy: vibrate 'none';  microphone 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'self'; fullscreen 'self'; payment 'self'; usermedia 'self'; sync-xhr 'self'; geolocation 'self'; midi 'self'; notifications 'self'; push 'self';",
             "A-Music-Hacker: '(¬‿¬) If you are reading this, send a message to someone[at]example[dot]com and mention this header.'",
           ],
+          /*Just the Netlify CMS Admin panels*/
           "/admin/*": [
             "Cache-Control: must-revalidate, no-cache, no-store, pre-check=0, post-check=0, max-age=0, s-maxage=0",
             "Content-Security-Policy: default-src 'self'; font-src 'self' https://fonts.gstatic.com; frame-src https://www.youtube.com; connect-src 'self'; img-src 'self' https://raw.githubusercontent.com; media-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; report-uri https://aagamamusic.report-uri.com/r/d/csp/enforce;",
@@ -61,9 +62,10 @@ module.exports = {
             "Pragma: no-cache",
             "X-Robots-Tag: noindex,nofollow",
           ],
+          /*News posts (which contain disqus comment sections)*/
           "/news/*": [
             "Cache-Control: no-cache",
-            "Content-Security-Policy: default-src *; script-src *; img-src *;",
+            "Content-Security-Policy: default-src *; font-src 'self' https://fonts.gstatic.com; frame-src *; connect-src 'self'; img-src *; media-src 'self'; script-src *; style-src *; report-uri https://aagamamusic.report-uri.com/r/d/csp/enforce;",
           ],
         },
       }
