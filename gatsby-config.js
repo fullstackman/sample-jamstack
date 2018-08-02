@@ -39,7 +39,7 @@ module.exports = {
       options: {
         /*This affects every page that we actually build*/
         allPageHeaders: [
-          "Content-Security-Policy: default-src 'self'; font-src 'self' https://fonts.gstatic.com; frame-src https://www.youtube.com; connect-src 'self'; img-src 'self'; media-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; report-uri https://aagamamusic.report-uri.com/r/d/csp/report;",
+          "Content-Security-Policy: default-src 'none'; connect-src links.services.disqus.com aagamamusic.report-uri.com; font-src 'self' cdnjs.cloudflare.com fonts.gstatic.com; frame-src disqus.com c.disquscdn.com www.google.com www.youtube.com; img-src 'self' c.disquscdn.com referrer.disqus.com www.gstatic.com data:; script-src 'self' c.disquscdn.com disqus.com mangu.disqus.com www.google.com www.gstatic.com cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' c.disquscdn.com cdnjs.cloudflare.com fonts.googleapis.com; form-action 'none'; base-uri 'self'; upgrade-insecure-requests; report-uri https://aagamamusic.report-uri.com/r/d/csp/enforce",
         ],
         headers: {
           /*This afffects every page requested, even malicious requests and 404s*/
@@ -49,10 +49,10 @@ module.exports = {
             "X-Content-Type-Options: nosniff",
             "Referrer-Policy: strict-origin-when-cross-origin",
             "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload",
-            "Content-Security-Policy: default-src 'none'; report-uri https://aagamamusic.report-uri.com/r/d/csp/report",
-            "Expect-CT: max-age=86400, enforce, report-uri='https://aagamamusic.report-uri.com/r/d/ct/report'",
+            "Content-Security-Policy: default-src 'none'; report-uri https://aagamamusic.report-uri.com/r/d/csp/enforce",
+            "Expect-CT: max-age=86400, enforce, report-uri='https://aagamamusic.report-uri.com/r/d/ct/enforce'",
             "Feature-Policy: vibrate 'none';  microphone 'none'; magnetometer 'none'; gyroscope 'none'; speaker 'self'; fullscreen 'self'; payment 'self'; usermedia 'self'; sync-xhr 'self'; geolocation 'self'; midi 'self'; notifications 'self'; push 'self';",
-            "A-Music-Hacker: '(¬‿¬) If you are reading this, send a message to someone[at]example[dot]com and mention this header.'",
+            "A-Music-Hacker: '0___0 If you are reading this, send a message to someone[at]example[dot]com and mention this header.'",
           ],
           /*Just the Netlify CMS Admin panels*/
           "/admin/*": [
@@ -65,7 +65,6 @@ module.exports = {
           /*News posts (which contain disqus comment sections)*/
           "/news/*": [
             "Cache-Control: no-cache",
-            "Content-Security-Policy: default-src 'self' *.disqus.com; font-src 'self' https://fonts.gstatic.com; frame-src *; connect-src 'self'; img-src *; media-src 'self'; script-src 'self' 'unsafe-inline' *.disqus.com; style-src *; report-uri https://aagamamusic.report-uri.com/r/d/csp/report;",
           ],
         },
       }

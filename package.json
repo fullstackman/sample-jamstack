@@ -32,8 +32,7 @@
   "main": "n/a",
   "scripts": {
     "start": "npm run develop",
-    "patch": "sed -i -e 's/if(c\\.initial) return;/if(!c||c.initial) return;/g' ./node_modules/extract-text-webpack-plugin/index.js",
-    "build": "npm run patch && gatsby build",
+    "build": "gatsby build",
     "develop": "gatsby develop",
     "serve": "gatsby serve",
     "format": "prettier --trailing-comma es5 --no-semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
