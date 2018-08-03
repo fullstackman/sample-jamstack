@@ -1,30 +1,61 @@
-import path from 'path';
-import React from 'react';
-import Helmet from 'react-helmet';
-import PropTypes from 'prop-types';
-import config from '../config';
+import React, { Component } from 'react'
+import Helmet from 'react-helmet'
+import config from '../utils/siteConfig'
 
-const getSchemaOrgJSONLD = ({
-  isBlogPost,
-  url,
-  title,
-  image,
-  description,
-  datePublished,
-}) => {
-  const schemaOrgJSONLD = [
-    {
-      '@context': 'http://schema.org',
-      '@type': 'WebSite',
-      url,
-      name: title,
-      alternateName: config.title,
-    },
-  ];
+class SEO extends Component {
+  render() {
+    const { postNode, pagePath, postSEO, pageSEO, customTitle } = this.props
+    let title
+    let description
+    let image
+    let imgWidth
+    let imgHeight
+    let pageUrl
 
-  return isBlogPost
-    ? [
-        ...schemaOrgJSONLD,
+    // Set Default OpenGraph Parameters for Fallback
+    title = config.siteTitle
+    description = config.siteDescription
+    image = config.siteUrl + config.shareImage
+    imgWidth = config.shareImageWidth
+    imgHeight = config.shareImageHeight
+    pageUrl = config.siteUrl
+
+    if (customTitle) {
+      title = postNode.title
+      pageUrl = config.siteUrl + '/' + pagePath + '/'
+    }
+
+    // Replace with Page Parameters if post or page
+    if (postSEO || pageSEO) {
+      title = postNode.title
+      description =
+        postNode.metaDescription === null
+          ? postNode.body.childMarkdownRemark.excerpt
+          : postNode.metaDescription.internal.content
+
+      pageUrl = config.siteUrl + '/' + pagePath + '/'
+    }
+    // Use Hero Image for OpenGraph
+    if (postSEO) {
+      image = 'https:' + postNode.heroImage.ogimg.src
+      imgWidth = postNode.heroImage.ogimg.width
+      imgHeight = postNode.heroImage.ogimg.height
+    }
+
+    // Default Website Schema
+    const schemaOrgJSONLD = [
+      {
+        '@context': 'http://schema.org',
+        '@type': 'WebSite',
+        url: config.siteUrl,
+        name: config.siteTitle,
+        alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
+      },
+    ]
+
+    // Blog Post Schema
+    if (postSEO) {
+      schemaOrgJSONLD.push(
         {
           '@context': 'http://schema.org',
           '@type': 'BreadcrumbList',
@@ -33,9 +64,16 @@ const getSchemaOrgJSONLD = ({
               '@type': 'ListItem',
               position: 1,
               item: {
-                '@id': url,
+                '@id': config.siteUrl,
+                name: config.siteTitle,
+              },
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              item: {
+                '@id': pageUrl,
                 name: title,
-                image,
               },
             },
           ],
@@ -43,97 +81,75 @@ const getSchemaOrgJSONLD = ({
         {
           '@context': 'http://schema.org',
           '@type': 'BlogPosting',
-          url,
+          url: pageUrl,
           name: title,
-          alternateName: config.title,
+          alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
           headline: title,
           image: {
             '@type': 'ImageObject',
             url: image,
+            width: imgWidth,
+            height: imgHeight,
           },
-          description,
           author: {
             '@type': 'Person',
-            name: 'Jason Lengstorf',
+            name: config.author,
+            url: config.authorUrl,
           },
           publisher: {
             '@type': 'Organization',
-            url: 'https://lengstorf.com',
-            logo: config.logo,
-            name: 'Jason Lengstorf',
+            name: config.publisher,
+            url: config.siteUrl,
           },
-          mainEntityOfPage: {
-            '@type': 'WebSite',
-            '@id': config.url,
-          },
-          datePublished,
-        },
-      ]
-    : schemaOrgJSONLD;
-};
+          datePublished: postNode.publishDateISO,
+          mainEntityOfPage: pageUrl,
+        }
+      )
+    }
 
-const SEO = ({ postData, postImage, isBlogPost }) => {
-  const postMeta = postData.frontmatter || {};
+    // Page SEO Schema
+    if (pageSEO) {
+      schemaOrgJSONLD.push({
+        '@context': 'http://schema.org',
+        '@type': 'WebPage',
+        url: pageUrl,
+        name: title,
+      })
+    }
 
-  const title = postMeta.title || config.title;
-  const description =
-    postMeta.description || postData.excerpt || config.description;
-  const image = `${config.url}${postImage}` || config.image;
-  const url = postMeta.slug
-    ? `${config.url}${path.sep}${postMeta.slug}`
-    : config.url;
-  const datePublished = isBlogPost ? postMeta.datePublished : false;
+    return (
+      <Helmet>
+        {/* General tags */}
+        <meta name="image" content={image} />
+        <meta name="description" content={description} />
 
-  const schemaOrgJSONLD = getSchemaOrgJSONLD({
-    isBlogPost,
-    url,
-    title,
-    image,
-    description,
-    datePublished,
-  });
+        {/* Schema.org tags */}
+        <script type="application/ld+json">
+          {JSON.stringify(schemaOrgJSONLD)}
+        </script>
 
-  return (
-    <Helmet>
-      {/* General tags */}
-      <meta name="description" content={description} />
-      <meta name="image" content={image} />
+        {/* OpenGraph tags */}
+        <meta property="og:title" content={title} />
+        {postSEO ? <meta property="og:type" content="article" /> : null}
 
-      {/* Schema.org tags */}
-      <script type="application/ld+json">
-        {JSON.stringify(schemaOrgJSONLD)}
-      </script>
+        <meta property="og:url" content={pageUrl} />
+        <meta property="og:image" content={image} />
+        <meta property="og:image:width" content={imgWidth} />
+        <meta property="og:image:height" content={imgHeight} />
+        <meta property="og:description" content={description} />
 
-      {/* OpenGraph tags */}
-      <meta property="og:url" content={url} />
-      {isBlogPost ? <meta property="og:type" content="article" /> : null}
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={image} />
-      <meta property="fb:app_id" content={config.fbAppID} />
+        {/* Twitter Card tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:creator"
+          content={config.userTwitter ? config.userTwitter : ''}
+        />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:image" content={image} />
+        <meta name="twitter:description" content={description} />
+      </Helmet>
+    )
+  }
+}
 
-      {/* Twitter Card tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:creator" content={config.twitter} />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image} />
-    </Helmet>
-  );
-};
-
-SEO.propTypes = {
-  isBlogPost: PropTypes.bool,
-  postData: PropTypes.shape({
-    frontmatter: PropTypes.any,
-    excerpt: PropTypes.any,
-  }).isRequired,
-  postImage: PropTypes.string,
-};
-
-SEO.defaultProps = {
-  isBlogPost: false,
-  postImage: null,
-};
-
-export default SEO;
+export default SEO

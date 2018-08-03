@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Content, { HTMLContent } from '../components/Content'
 import Disqus from 'disqus-react'
+import config from '../utils/siteConfig'
 
 export const NewsPostTemplate = ({
   author,
@@ -19,7 +20,64 @@ export const NewsPostTemplate = ({
   const PostContent = contentComponent || Content;
   author.authorName = author.authorName || 'Unknown Author';
   author.handle = author.handle || '';
-
+  let pageUrl = `https://mangu.netlify.com/news/${title.replace(/\s/g, "-").toLowerCase()}/`
+  config.schemaObject.push(
+    {
+    '@context': 'http://schema.org',
+    '@type': 'WebSite',
+    url: 'https://mangu.netlify.com',
+    name: title,
+    alternateName: config.siteTitleAlt,
+    },
+    {
+      '@context': 'http://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          item: {
+            '@id': config.siteUrl,
+            name: config.siteTitle,
+          },
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          item: {
+            '@id': pageUrl,
+            name: title,
+          },
+        },
+      ],
+    },
+    {
+      '@context': 'http://schema.org',
+      '@type': 'BlogPosting',
+      url: pageUrl,
+      name: title,
+      alternateName: config.siteTitleAlt ? config.siteTitleAlt : '',
+      headline: title,
+      image: {
+        '@type': 'ImageObject',
+        url: config.shareImage /*or post defined image*/,
+        width: config.shareImageWidth,
+        height: config.shareImageHeight,
+      },
+      author: {
+        '@type': 'Person',
+        name: author.authorName,
+        url: author.handle || config.siteUrl,
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: config.publisher,
+        url: config.siteUrl,
+      },
+      datePublished: date,
+      mainEntityOfPage: pageUrl,
+    }
+  )
   const disqusShortname = 'mangu';
   const disqusConfig = {
       url: `https://mangu.netlify.com/news/${title}/`,
@@ -49,7 +107,22 @@ export const NewsPostTemplate = ({
         </div>
       </section>
       <section className="section">
-        <Helmet title={`${title} | News`} />
+        <Helmet>
+          <title>{`${title} | Mangu`}</title>
+          <meta name="description" content={description}/>
+          <meta name="keywords" content={tags}/>
+          <meta name="twitter:card" content={description} />
+          <meta name="twitter:site" content="@fullstackman" />
+          <meta name="twitter:creator" content="@fullstackman" />
+          <meta property="og:url" content={pageUrl} />
+          <meta property="og:title" content={`${title} | Mangu`} />
+          <meta property="og:description" content={description} />
+          <meta property="og:image" content="https://mangu.netlify.com/img/logo.png" />
+          {/* Schema.org tags */}
+          <script type="application/ld+json">
+            {JSON.stringify(config.schemaObject)}
+          </script>
+        </Helmet>
         <div className="container content">
           <div className="columns">
             <div className="column">
