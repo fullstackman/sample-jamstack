@@ -6,29 +6,38 @@ import config from '../utils/siteConfig'
 import Navbar from '../components/Navbar'
 import './all.sass'
 
-const brandName="Mangu";
+export const brandName="Mangu";
 const thisYear=(new Date()).getFullYear();
+function updateJourney(zUpdate){
+    this.setState({zUpdate})
+}
 
 export default class Template extends React.Component {
   constructor(props) {
     super(props);
 
+    let entryPoint = document.referrer || 'DIRECT';
+    //globalJourney = entryPoint;
+
     // current state of the pages the user has visited in this session
     this.state = {
-      userJourney: props.location.pathname,
+      userJourney: `${entryPoint}>>${props.location.pathname}`,
     }
 
     // event listener to update the userJourney variable
     this.props.history.listen((location, action) => {
-      //console.log(`${location.pathname} -- Route change is happening!`);
+      // console.log(`${location.pathname} -- Route change is happening!`);
       this.setState((prevState) => {
         // Important: read `prevState` instead of `this.state` when updating.
-        return {userJourney: `${prevState.userJourney} --> ${location.pathname}`}
+        let newState = `${prevState.userJourney}>>${location.pathname}`;
+        return {userJourney: newState}
       });
     });
   }
   render() {
     let zPath = this.state.userJourney;
+    // pass the state value into the DOM so any component can access it. Not cool, but it works.
+    document.breadcrumbz = zPath;
     return(
     <div>
       <Helmet>
@@ -54,7 +63,7 @@ export default class Template extends React.Component {
         {/* Place favicon.ico in the root directory*/}
         <link rel="apple-touch-icon" href="/img/logo.png"/>
       </Helmet>
-      {/* for debugging: <div>userJourney is now: {zPath}</div>*/}
+      {/* for debugging<div>userJourney is now: {zPath}</div>*/}
       <Navbar />
       <div>{this.props.children()}</div>
       <div className="site-footer">

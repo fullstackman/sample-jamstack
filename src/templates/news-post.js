@@ -4,6 +4,7 @@ import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
 import Content, { HTMLContent } from '../components/Content'
+import Signup from '../components/Signup'
 import Disqus from 'disqus-react'
 import config from '../utils/siteConfig'
 
@@ -157,10 +158,7 @@ export const NewsPostTemplate = ({
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
                     </p>
-                    <div className="control">
-                      Email:
-                      <input className="input" type="text" placeholder="you@your-website.com"/>
-                    </div>
+                    <Signup />
                   </div>
                 </div>
               </div>
